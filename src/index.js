@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom";
-import App from "./courseinfo/App";
+import { render } from "react-dom";
+import App from "./courseinfo/02-javascript/App";
 
 render(<App />, document.querySelector("#root"));
