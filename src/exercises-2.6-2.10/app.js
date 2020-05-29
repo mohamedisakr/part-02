@@ -9,14 +9,15 @@ const App = () => {
     const personObject = { id: persons.length + 1, name: newName };
     console.log(personObject);
 
-    // persons.forEach((member) => {
-    //   if (member.name.toLowerCase() === personObject.name.toLowerCase()) {
-    //     alert(`${personObject.name} is already added to phonebook`);
-    //     setNewName("");
-    //     return;
-    //   }
-    //   else {              }
-    // });
+    if (
+      persons.find(
+        ({ name }) => name.toLowerCase() === personObject.name.toLowerCase()
+      )
+    ) {
+      alert(`${personObject.name} is already added to phonebook`);
+      setNewName("");
+      return;
+    }
 
     setPersons(persons.concat(personObject));
     setNewName("");
