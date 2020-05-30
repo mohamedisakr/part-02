@@ -57,37 +57,11 @@ const App = () => {
 
   return (
     <div>
-      {/* <h2>Phonebook</h2>
-      <div>
-        Search:
-        <input
-          type="search"
-          placeholder="Search for contact"
-          value={keyword}
-          onChange={handleKeywordChange}
-        />
-        {keyword}
-      </div> */}
       <SearchBox
         keyword={keyword}
         placeholder="Search for contact"
         handleKeywordChange={handleKeywordChange}
       />
-      {/* <div>
-        <h2>Add New Contact</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            Name: <input value={newName} onChange={handleNameChange} />
-          </div>
-          <div>
-            Number: <input value={newNumber} onChange={handleNumberChange} />
-          </div>
-          <div>
-            <button type="submit">Add</button>
-          </div>
-        </form>
-      </div> */}
-
       <ContactForm
         newName={newName}
         newNumber={newNumber}
