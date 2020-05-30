@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContactList from "./components/contact-list";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -77,14 +78,15 @@ const App = () => {
           <button type="submit">Add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
+      {/* <h2>Contacts</h2>
       <div>
         {filteredContacts.map((person) => (
           <p key={person.id}>
             {person.name} {person.number}
           </p>
         ))}
-      </div>
+      </div> */}
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 };
