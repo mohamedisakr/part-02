@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ContactList from "./components/contact-list";
+import ContactForm from "./components/contact-form";
+import SearchBox from "./components/search-box";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -12,10 +14,10 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [keyword, setKeyword] = useState("");
+
   let filteredContacts = persons.filter(({ name }) =>
     name.toLowerCase().includes(keyword.toLowerCase())
   );
-  console.log(filteredContacts);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +57,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      {/* <h2>Phonebook</h2>
       <div>
         Search:
         <input
@@ -65,27 +67,34 @@ const App = () => {
           onChange={handleKeywordChange}
         />
         {keyword}
-      </div>
-      <h2>Add New Contact</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input value={newName} onChange={handleNameChange} />
-        </div>
-        <div>
-          Number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button type="submit">Add</button>
-        </div>
-      </form>
-      {/* <h2>Contacts</h2>
-      <div>
-        {filteredContacts.map((person) => (
-          <p key={person.id}>
-            {person.name} {person.number}
-          </p>
-        ))}
       </div> */}
+      <SearchBox
+        keyword={keyword}
+        placeholder="Search for contact"
+        handleKeywordChange={handleKeywordChange}
+      />
+      <div>
+        <h2>Add New Contact</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            Name: <input value={newName} onChange={handleNameChange} />
+          </div>
+          <div>
+            Number: <input value={newNumber} onChange={handleNumberChange} />
+          </div>
+          <div>
+            <button type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+
+      {/* <ContactForm
+        newName={newName}
+        newNumber={newNumber}
+        handleSubmit={handleSubmit}
+        handleNameChange={handleNameChange}
+        handleNumberChange={handleNumberChange}
+      /> */}
       <ContactList contacts={filteredContacts} />
     </div>
   );
