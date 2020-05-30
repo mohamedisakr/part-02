@@ -73,7 +73,7 @@ const App = () => {
         placeholder="Search for contact"
         handleKeywordChange={handleKeywordChange}
       />
-      <div>
+      {/* <div>
         <h2>Add New Contact</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -86,15 +86,15 @@ const App = () => {
             <button type="submit">Add</button>
           </div>
         </form>
-      </div>
+      </div> */}
 
-      {/* <ContactForm
+      <ContactForm
         newName={newName}
         newNumber={newNumber}
         handleSubmit={handleSubmit}
         handleNameChange={handleNameChange}
         handleNumberChange={handleNumberChange}
-      /> */}
+      />
       <ContactList contacts={filteredContacts} />
     </div>
   );

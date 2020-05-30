@@ -1,12 +1,12 @@
 import React from "react";
 
-const ContactForm = (
+const ContactForm = ({
   newName,
   newNumber,
   handleSubmit,
   handleNameChange,
-  handleNumberChange
-) => (
+  handleNumberChange,
+}) => (
   <div>
     <h2>Add New Contact</h2>
     <form onSubmit={handleSubmit}>
