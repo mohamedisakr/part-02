@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ContactList from "./components/contact-list";
-import ContactForm from "./components/contact-form";
-import SearchBox from "./components/search-box";
+import ContactList from "./contact-list";
+import ContactForm from "./contact-form";
+import SearchBox from "./search-box";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
