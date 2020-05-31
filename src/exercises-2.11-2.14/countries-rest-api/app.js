@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBox from "../../exercises-2.11-2.14/components/search-box";
+// import SearchBox from "../../exercises-2.11-2.14/components/search-box";
+import SearchBox from "./search-box";
+import CountryDetails from "./country-details";
 
 const App = () => {
   const [keyword, setKeyword] = useState("");
@@ -24,37 +26,31 @@ const App = () => {
   return (
     <div>
       <SearchBox
+        title="Worldwide Countries"
+        label="Find Countries"
         keyword={keyword}
         placeholder="Search for country"
         handleKeywordChange={handleKeywordChange}
       />
       {filteredCountries.length === 1 ? (
         filteredCountries.map((country) => (
-          <div key={country.alpha2Code}>
-            <h1>{country.name}</h1>
-            <p>capital {country.capital}</p>
-            <p>population {country.population}</p>
-            <h4>languages</h4>
-            <div>
-              <ul>
-                {country.languages.map((lang) => (
-                  <li key={lang.iso639_1}>{lang.name}</li>
-                ))}
-              </ul>
-              <img
-                src={country.flag}
-                alt={country.name}
-                width="200"
-                height="200"
-              />
-            </div>
-          </div>
+          <CountryDetails
+            key={country.alpha2Code}
+            alpha2Code={country.alpha2Code}
+            name={country.name}
+            capital={country.capital}
+            population={country.population}
+            languages={country.languages}
+            flag={country.flag}
+          />
         ))
       ) : filteredCountries.length >= 10 ? (
         <p>Too many matches, specify another filter</p>
       ) : (
         filteredCountries.map(({ alpha2Code, name }) => (
-          <p key={alpha2Code}>{name}</p>
+          <div key={alpha2Code}>
+            <span>{name}</span> <button>Show</button>
+          </div>
         ))
       )}
     </div>

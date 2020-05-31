@@ -1,3 +1,11 @@
+## Requirements
+
+https://fullstackopen.com/en/part2/getting_data_from_server
+
+1. Exercise 2.13 Data for countries step2,NOT implemented
+2. Exercise 2.14 Data for countries step3, NOT implemented
+3. Implement https://tiagobernardo.outsystemscloud.com/RESTCountries_Demo/
+
 ## Introduction
 
 Studying Deep Dive Into Modern Web Development (Full stack open 2020) @ https://fullstackopen.com/en/
