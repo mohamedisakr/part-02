@@ -16,10 +16,6 @@ const App = () => {
     );
   }, []);
 
-  let filteredContacts = persons.filter(({ name }) =>
-    name.toLowerCase().includes(keyword.toLowerCase())
-  );
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -59,6 +55,24 @@ const App = () => {
     setKeyword(event.target.value);
   };
 
+  const deleteContact = (id) => {
+    console.log(`delete contact with id ${id}.`);
+    const contactToDelete = persons.find((person) => person.id === id);
+    const reply = window.confirm(
+      `Are you sure you want to delete ${contactToDelete.name}?`
+    );
+    if (reply) {
+      ContactService.remove(id).then(() =>
+        setPersons(persons.filter((person) => person.id !== id))
+      );
+    }
+  };
+
+  console.log(persons);
+  let filteredContacts = persons.filter((person) =>
+    person.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+
   return (
     <div>
       <SearchBox
@@ -73,7 +87,7 @@ const App = () => {
         handleNameChange={handleNameChange}
         handleNumberChange={handleNumberChange}
       />
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={filteredContacts} handleClick={deleteContact} />
     </div>
   );
 };
