@@ -3,7 +3,6 @@ import ContactService from "./services";
 import ContactList from "./contact-list";
 import ContactForm from "./contact-form";
 import SearchBox from "./search-box";
-// import axios from "axios";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -15,9 +14,6 @@ const App = () => {
     ContactService.getAll().then((initiatedContacts) =>
       setPersons(initiatedContacts)
     );
-    // axios
-    //   .get("http://localhost:3001/persons")
-    //   .then((response) => setPersons(response.data));
   }, []);
 
   let filteredContacts = persons.filter(({ name }) =>
@@ -44,9 +40,11 @@ const App = () => {
       return;
     }
 
-    setPersons(persons.concat(personObject));
-    setNewName("");
-    setNewNumber("");
+    ContactService.create(personObject).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson));
+      setNewName("");
+      setNewNumber("");
+    });
   };
 
   const handleNameChange = (event) => {
