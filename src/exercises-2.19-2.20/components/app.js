@@ -73,9 +73,16 @@ const App = () => {
       `Are you sure you want to delete ${contactToDelete.name}?`
     );
     if (reply) {
-      ContactService.remove(id).then(() =>
-        setPersons(persons.filter((person) => person.id !== id))
-      );
+      ContactService.remove(id)
+        .then(() => setPersons(persons.filter((person) => person.id !== id)))
+        .catch((error) => {
+          setErrorMessage(
+            `Information about ${contactToDelete.name} has already removed from database`
+          );
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 400);
+        });
     }
   };
 

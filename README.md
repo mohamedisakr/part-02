@@ -6,6 +6,7 @@ https://fullstackopen.com/en/part2/getting_data_from_server
 2. Exercise 2.14 Data for countries step3, NOT implemented
 3. Implement https://tiagobernardo.outsystemscloud.com/RESTCountries_Demo/
 4. Exercise 2.18 Phonebook step 10
+5. Exercise 2.20 Phonebook step 12 >>> not working properly
 
 ## Introduction
 

@@ -24,16 +24,6 @@
       "id": 5,
       "name": "john doe",
       "number": "9874321"
-    },
-    {
-      "id": 6,
-      "name": "test contact ",
-      "number": "213122987"
-    },
-    {
-      "id": 7,
-      "name": "test message",
-      "number": "0987443322"
     }
   ]
 }
