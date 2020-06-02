@@ -30,17 +30,37 @@ const App = () => {
         ({ name }) => name.toLowerCase() === personObject.name.toLowerCase()
       )
     ) {
-      alert(`${personObject.name} is already added to phonebook`);
-      setNewName("");
-      setNewNumber("");
-      return;
+      // alert(`${personObject.name} is already added to phonebook`);
+      // setNewName("");
+      // setNewNumber("");
+      // return;
+      const reply = window.confirm(
+        `${personObject.name} is already added to phonebook, are you want to replace the old number with the new one?`
+      );
+      if (reply) {
+        // TODO: Requirement #4 Exercise 2.18 Phonebook step 10
+        ContactService.update(personObject.id, personObject).then(
+          (returned) => {
+            setPersons(
+              persons.map((person) => {
+                console.log(`person ${person}`);
+                console.log(`returned ${returned}`);
+                console.log(`personObject ${personObject}`);
+                person.id !== personObject.id ? returned : person;
+              })
+            );
+            setNewName("");
+            setNewNumber("");
+          }
+        );
+      }
+    } else {
+      ContactService.create(personObject).then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson));
+        setNewName("");
+        setNewNumber("");
+      });
     }
-
-    ContactService.create(personObject).then((returnedPerson) => {
-      setPersons(persons.concat(returnedPerson));
-      setNewName("");
-      setNewNumber("");
-    });
   };
 
   const handleNameChange = (event) => {
@@ -68,7 +88,7 @@ const App = () => {
     }
   };
 
-  console.log(persons);
+  // console.log(persons);
   let filteredContacts = persons.filter((person) =>
     person.name.toLowerCase().includes(keyword.toLowerCase())
   );
