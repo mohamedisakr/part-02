@@ -43,15 +43,20 @@ const App = () => {
       return;
     }
 
-    ContactService.create(personObject).then((returnedPerson) => {
-      setPersons(persons.concat(returnedPerson));
-      setConfirmation(`${returnedPerson.name} added successfully.`);
-      setTimeout(() => {
-        setConfirmation(null);
-      }, 4000);
-      setNewName("");
-      setNewNumber("");
-    });
+    ContactService.create(personObject)
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson));
+        setConfirmation(`${returnedPerson.name} added successfully.`);
+        setTimeout(() => {
+          setConfirmation(null);
+        }, 4000);
+        setNewName("");
+        setNewNumber("");
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data);
+        console.log(error.response.data);
+      });
   };
 
   const handleNameChange = (event) => {
